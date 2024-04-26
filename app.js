@@ -41,3 +41,19 @@ function displayMealCards(meals, showAll = false) {
 }
 
 
+// Event listener for search button
+searchButton.addEventListener('click', async () => {
+  const searchText = searchInput.value.trim();
+  if (searchText) {
+    const fetchedMeals = await fetchMeals(searchText);
+    meals = fetchedMeals || [];
+    displayMealCards(meals);
+  }
+});
+
+// Event listener for "Show All" button
+showAllButton.addEventListener('click', () => {
+  displayMealCards(meals, true);
+});
+
+
